@@ -228,30 +228,41 @@
       </div>
     </div>
 
-    <div class="w-full max-w-none mx-auto py-10 px-6">
-      <!-- 각 탭별 콘텐츠 블록 (처음엔 모두 hidden 상태) -->
-      <div id="content-main" class="hidden text-gray-800 text-xl sm:text-2xl">
-        <?!= include('main'); ?>
-      </div>
-      <div id="content-intro" class="hidden text-gray-800 text-xl sm:text-2xl">
-        <?!= include('intro'); ?>
-      </div>
-      <div id="content-venue" class="hidden text-gray-800 text-xl sm:text-2xl">
-        <?!= include('venue'); ?>
-      </div>
-      <div id="content-day0" class="hidden text-gray-800 text-xl sm:text-2xl">
-        <?!= include('day1'); ?>
-      </div>
-      <div id="content-day1" class="hidden text-gray-800 text-xl sm:text-2xl">
-        <?!= include('day2'); ?>
-      </div>
-      <div id="content-day2" class="hidden text-gray-800 text-xl sm:text-2xl">
-        <?!= include('day3'); ?>
-      </div>
-      <div id="content-verify" class="hidden text-gray-800 text-xl sm:text-2xl">
-        <?!= include('verify'); ?>
-      </div>
+<script>
+  async function includeContent(id, file) {
+    try {
+      const res = await fetch(file + ".html");
+      const html = await res.text();
+      document.getElementById(id).innerHTML = html;
+    } catch (err) {
+      document.getElementById(id).innerHTML = `<p class="text-red-500">${file}.html 불러오기 실패</p>`;
+console.error(`Error loading ${file}.html:`, err);
 
+    }
+  }
+
+  window.onload = async () => {
+    await includeContent("content-main", "main");
+    await includeContent("content-intro", "intro");
+    await includeContent("content-venue", "venue");
+    await includeContent("content-day0", "day1");
+    await includeContent("content-day1", "day2");
+    await includeContent("content-day2", "day3");
+    await includeContent("content-verify", "verify");
+
+    setTimeout(() => showTab('main'), 100);
+  };
+</script>
+<div class="w-full max-w-none mx-auto py-10 px-6">
+  <!-- 각 탭별 콘텐츠 블록 -->
+  <div id="content-main" class="hidden text-gray-800 text-xl sm:text-2xl"></div>
+  <div id="content-intro" class="hidden text-gray-800 text-xl sm:text-2xl"></div>
+  <div id="content-venue" class="hidden text-gray-800 text-xl sm:text-2xl"></div>
+  <div id="content-day0" class="hidden text-gray-800 text-xl sm:text-2xl"></div>
+  <div id="content-day1" class="hidden text-gray-800 text-xl sm:text-2xl"></div>
+  <div id="content-day2" class="hidden text-gray-800 text-xl sm:text-2xl"></div>
+  <div id="content-verify" class="hidden text-gray-800 text-xl sm:text-2xl"></div>
+</div>
       <!-- 신청 폼 (hidden 상태) -->
       <form id="registrationForm" class="hidden bg-white p-10 rounded-lg shadow-lg mt-12">
         <h5 id="lectureTitle" class="text-2xl sm:text-3xl font-bold text-[#45AF76] mb-6"></h5>
