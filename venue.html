@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>행사장 소개 | G-DEAL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+    body {
+      font-family: 'Pretendard', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <div class="max-w-none mx-auto px-4 py-4">
+    <p class="text-2xl sm:text-3xl text-left leading-relaxed mb-10">
+  📍 G-DEAL 컨퍼런스는 <strong class="text-[#45AF76]">부산 벡스코 제2전시장 1층 A홀 컨퍼런스룸 121호~123호</strong>에서 열립니다.<br>
+  <br>
+  📍 부산 지하철 <strong class="text-[#45AF76]">센텀시티역 1번 출구 혹은 벡스코역 5번 출구</strong>에서 도보 5분 거리입니다.<br>
+</p>
+
+    <!-- 반응형 2단 배치 -->
+    <div class="flex flex-col lg:flex-row gap-8 items-start justify-center">
+      <!-- 지도 -->
+        <div class="w-full lg:w-1/2">
+        <iframe
+      class="w-full h-[500px] rounded-lg shadow"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.2622140658775!2d129.13248737610305!3d35.165812549601314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356892b8f541b779%3A0xae581e3659fcf1f7!2z67aA7IKw7YOAIOycoOyEuCDtlZzqtIA!5e0!3m2!1sko!2skr!4v1717428506805!5m2!1sko!2skr"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+      <!-- 행사장 도면 -->
+      <div class="w-full lg:w-1/2 flex justify-center items-center">
+    <img src="https://raw.githubusercontent.com/ByeongjunPark/G-DEAL/master/행사장.svg"
+         alt="행사장 도면"
+         class="w-full h-[500px] object-contain rounded-lg shadow" />
+</div>
+    </div>
+  </div>
+</body>
+</html>
