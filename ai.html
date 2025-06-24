@@ -182,32 +182,80 @@
     sections.forEach(sec => observer.observe(sec));
 
     // 퀴즈 내용
-    const quizzes = {
-      quiz1: { q: "딥페이크와 가짜 정보는 어떤 사회적 위험을 강화하나요?", a: "사회적 분열" },
-      quiz2: { q: "힌턴은 초지능 AI가 언제 등장할 가능성이 있다고 했나요?", a: "10~20년 내" },
-      quiz3: { q: "AI 기반 병원체 설계의 최악 시나리오는 무엇인가요?", a: "개인이 다중 피해를 유발" },
-      quiz4: { q: "AI 대체로 인해 논의되는 사회적 지원은 무엇인가요?", a: "기본소득(UBI)" },
-      quiz5: { q: "기업이 투입해야 하는 R&D 자원의 비율은?", a: "1/3" },
-      quiz6: { q: "AI 감정 시뮬레이션 vs 실제 감정 논쟁의 핵심은?", a: "시뮬레이션인지 진짜 감정인지" }
-    };
-    function openQuiz(id) {
-      const modal = document.getElementById('quiz-modal');
-      const content = document.getElementById('quiz-content');
-      const { q, a } = quizzes[id];
-      content.innerHTML = `<p class="text-lg font-semibold mb-2">${q}</p>
-        <input id="quiz-answer" class="mt-2 w-full px-3 py-2 rounded border bg-gray-100 dark:bg-gray-800 dark:border-gray-700" placeholder="정답을 입력하세요"/>
-        <button onclick="checkAnswer('${id}')" class="mt-3 px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-500 transition">제출</button>`;
-      modal.classList.remove('hidden');
-    }
-    function closeQuiz() {
-      document.getElementById('quiz-modal').classList.add('hidden');
-    }
-    function checkAnswer(id) {
-      const input = document.getElementById('quiz-answer').value.trim();
-      const correct = quizzes[id].a;
-      alert(input === correct ? "정답입니다!" : `오답입니다. 정답은: ${correct}`);
-      closeQuiz();
-    }
+    // 선다형 퀴즈: 문제, 보기, 정답 인덱스, 해설
+const quizzes = {
+  quiz1: {
+    q: "딥페이크와 가짜 정보 기술의 확산이 사회에 미치는 가장 큰 단기적 위험은 무엇인가요?",
+    choices: ["경제 성장", "사회적 신뢰 저하", "기술 혁신 촉진", "공정한 선거 보장"],
+    answerIdx: 1,
+    explanation: "딥페이크와 가짜 정보는 사회 구성원 간 신뢰를 떨어뜨리고, 여론 조작 및 사회적 분열로 이어질 수 있습니다."
+  },
+  quiz2: {
+    q: "초지능 AI의 등장이 사회에 미칠 수 있는 위험으로 가장 적절한 것은 무엇인가요?",
+    choices: ["단순 반복 업무의 감소", "인간의 통제 범위를 벗어난 의사결정", "인터넷 속도 저하", "예술 창작 능력 저하"],
+    answerIdx: 1,
+    explanation: "초지능 AI는 자기보존 및 자체 목표 설정 등으로 인간이 통제하기 어려운 방향으로 진화할 수 있다는 우려가 있습니다."
+  },
+  quiz3: {
+    q: "AI 기반 자율 무기의 주요 위험으로 적절하지 않은 것은?",
+    choices: ["의도치 않은 피해 발생", "무력 충돌의 자동화", "평화 협상 촉진", "대량파괴 병기 설계 가능성"],
+    answerIdx: 2,
+    explanation: "자율 무기는 오히려 전쟁의 위험과 피해를 높일 수 있으므로, 평화 협상 촉진은 해당되지 않습니다."
+  },
+  quiz4: {
+    q: "AI 발전에 따른 일자리 문제에 사회적 대응책으로 제안되는 정책은 무엇인가요?",
+    choices: ["기본소득 도입", "주 6일제 근무", "임금 하락 유도", "무조건적 자동화 확대"],
+    answerIdx: 0,
+    explanation: "일자리 감소와 불평등 심화에 대응하기 위해 기본소득(UBI) 논의가 활발히 이루어지고 있습니다."
+  },
+  quiz5: {
+    q: "AI 윤리 및 안전을 위해 국제적으로 논의되는 주요 정책 방안은 무엇인가요?",
+    choices: ["모든 AI 사용 금지", "공공-민간 협력 강화", "연구 개발 예산 감소", "기술 독점 허용"],
+    answerIdx: 1,
+    explanation: "AI의 안전한 발전을 위해 법·제도 마련과 함께 공공-민간, 국제 협력이 강조되고 있습니다."
+  },
+  quiz6: {
+    q: "AI의 감정 표현과 관련한 핵심 윤리적 논쟁은 무엇인가요?",
+    choices: ["데이터 저장 용량", "실제 감정과 시뮬레이션의 구분", "인터넷 연결 문제", "전력 소모량"],
+    answerIdx: 1,
+    explanation: "AI가 감정을 시뮬레이션할 수 있지만, 진짜 감정인지에 대한 철학적·윤리적 논란이 존재합니다."
+  }
+};
+
+function openQuiz(id) {
+  const modal = document.getElementById('quiz-modal');
+  const content = document.getElementById('quiz-content');
+  const { q, choices } = quizzes[id];
+  let html = `<p class="text-lg font-semibold mb-2">${q}</p>`;
+  choices.forEach((choice, idx) => {
+    html += `
+      <button
+        onclick="checkAnswer('${id}', ${idx})"
+        class="block w-full text-left px-4 py-2 mb-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-blue-200 dark:hover:bg-blue-700 transition"
+      >${String.fromCharCode(65 + idx)}. ${choice}</button>
+    `;
+  });
+  content.innerHTML = html;
+  modal.classList.remove('hidden');
+}
+
+function closeQuiz() {
+  document.getElementById('quiz-modal').classList.add('hidden');
+}
+
+function checkAnswer(id, selectedIdx) {
+  const { answerIdx, choices, explanation } = quizzes[id];
+  const result = selectedIdx === answerIdx
+    ? `<span class="font-bold text-green-600">정답입니다!</span>`
+    : `<span class="font-bold text-red-600">오답입니다.</span> <br>정답: ${String.fromCharCode(65 + answerIdx)}. ${choices[answerIdx]}`;
+  const modal = document.getElementById('quiz-modal');
+  const content = document.getElementById('quiz-content');
+  content.innerHTML = `
+    <div class="mb-3">${result}</div>
+    <div class="mb-2 text-sm text-gray-700 dark:text-gray-300"><b>[해설]</b> ${explanation}</div>
+    <button onclick="closeQuiz()" class="mt-4 px-5 py-2 bg-red-600 text-white rounded-full shadow hover:bg-red-500 transition">닫기</button>
+  `;
+}
   </script>
   <style>
     @media (max-width: 768px) {
