@@ -8,79 +8,97 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .section-title { @apply text-2xl font-semibold text-blue-700 mb-4; }
+    .section-title { @apply text-2xl font-semibold text-blue-700 mb-6; }
     .highlight { @apply text-blue-600 font-semibold; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
   <header class="bg-blue-900 text-white p-6 shadow-md">
     <div class="container mx-auto text-center">
-      <h1 class="text-3xl font-bold">OECD 티칭 콤파스 (Teaching Compass)</h1>
-      <p class="text-lg mt-2">교육과 미래를 이끄는 교사의 나침반</p>
+      <h1 class="text-4xl font-bold">OECD 티칭 콤파스</h1>
+      <p class="text-lg mt-2">교사와 함께 그리는 교육의 미래 지도</p>
     </div>
   </header>
 
-  <main class="container mx-auto px-4 py-8 space-y-16">
-    <section>
-      <h2 class="section-title">개요</h2>
-      <p>
-        OECD의 티칭 콤파스는 교사의 전문성과 웰빙, 주도성을 바탕으로 미래 교육의 방향을 제시하는 프레임워크입니다. 이는 OECD 러닝 콤파스와 함께 구성되며, 교사와 학생이 함께 성장하고 미래를 설계할 수 있도록 돕는 나침반 역할을 합니다.
-      </p>
+  <main class="container mx-auto px-4 py-10 space-y-20">
+
+    <section class="text-center">
+      <h2 class="section-title">전체 구조 한눈에 보기</h2>
+      <img src="https://i.ibb.co/gvNhJ44/teaching-compass-infographic.png" alt="Teaching Compass 구조도" class="mx-auto w-full max-w-3xl shadow-lg rounded-md">
+      <p class="text-sm mt-3 text-gray-600">OECD Teaching Compass 개요 인포그래픽</p>
     </section>
 
     <section>
-      <h2 class="section-title">핵심 요소</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li><span class="highlight">우리가 원하는 미래 만들기</span>: 교육의 목적과 비전을 명확히 하여 지속 가능한 사회와 환경에 기여</li>
-        <li><span class="highlight">콤파스의 닻 내리기</span>: 교사의 정체성과 윤리를 중심에 두고 변화 속에서도 중심을 지키도록 지원</li>
-        <li><span class="highlight">교사 주도성(에이전시)</span>: 교육과정 혁신을 주도하는 교사로서의 자율성과 책임 부여</li>
-        <li><span class="highlight">복잡성에 대응하는 교사 역량</span>: 비판적 사고, 창의력, 공감 등 다양한 역량을 통합적으로 개발</li>
-        <li><span class="highlight">교사 웰빙</span>: 지속 가능한 전문성을 위한 신체적, 정서적, 인지적 건강 강조</li>
-        <li><span class="highlight">집단적 영향력을 위한 교육 생태계</span>: 다양한 이해관계자와 협업하는 집단적 책임 강조</li>
-      </ul>
+      <h2 class="section-title">6대 핵심 축</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold mb-2 text-blue-700">1. 우리가 원하는 미래 만들기</h3>
+          <p>교육의 비전과 목적 정립, 사회·환경적 지속가능성 추구</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold mb-2 text-blue-700">2. 콤파스의 닻 내리기</h3>
+          <p>교사의 전문성과 윤리를 바탕으로 변화 속 중심을 지킴</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold mb-2 text-blue-700">3. 교사 에이전시</h3>
+          <p>교육과정 변화를 이끄는 주체로서의 교사 권한 강화</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold mb-2 text-blue-700">4. 복잡성 대응 역량</h3>
+          <p>문제 해결력, 창의성, 디지털 이해 등 통합적 역량 강조</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold mb-2 text-blue-700">5. 교사 웰빙</h3>
+          <p>지속가능한 전문성을 위한 신체·정서·인지적 건강 보장</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold mb-2 text-blue-700">6. 집단적 영향력을 위한 생태계</h3>
+          <p>학부모, 지역사회, 정책과 협력하는 교육 파트너십 지향</p>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="text-center">
       <h2 class="section-title">비주얼 프레임워크</h2>
-      <img src="https://www.oecd.org/content/dam/oecd/en/about/projects/edu/education-2040/1-1-learning-compass/OECD_Learning_Compass_2030_Concept_Note_Series.pdf" alt="Teaching Compass Visual" class="mx-auto rounded-lg shadow-md">
-      <p class="text-center text-sm mt-2 text-gray-600">OECD Teaching Compass의 시각적 구조</p>
+      <img src="https://i.ibb.co/tLmpjrC/oecd-compass-visual.png" alt="Teaching Compass 도식" class="mx-auto w-full max-w-2xl rounded-lg shadow">
+      <p class="text-sm mt-2 text-gray-600">교사 중심의 자기인식, 에이전시, 역량, 웰빙, 공동학습을 표현</p>
     </section>
 
     <section>
-      <h2 class="section-title">AI 시대의 교사 역할</h2>
-      <p>
-        인공지능(AI)의 부상은 교사의 역할에 새로운 도전을 가져오고 있습니다. OECD는 교사와 AI 간의 <span class="highlight">공존(Co-agency)</span>을 제시하며, 교사가 윤리적 판단과 인간적 상호작용을 중심으로 기술을 활용할 수 있도록 안내합니다.
-        교사는 여전히 교육의 중심이며, AI는 그들의 업무를 보조하는 도구로 활용됩니다.
-      </p>
+      <h2 class="section-title">교사 에이전시의 3가지 차원</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-blue-50 p-5 rounded shadow">
+          <h3 class="font-bold text-blue-700 mb-2">개별 에이전시</h3>
+          <p>교사 스스로 교육적 결정을 내릴 수 있는 자율성과 자신감</p>
+        </div>
+        <div class="bg-blue-50 p-5 rounded shadow">
+          <h3 class="font-bold text-blue-700 mb-2">공동 에이전시</h3>
+          <p>학생, 동료 교사, AI 등과 상호작용하며 공동 주체로 성장</p>
+        </div>
+        <div class="bg-blue-50 p-5 rounded shadow">
+          <h3 class="font-bold text-blue-700 mb-2">집단적 에이전시</h3>
+          <p>학교 공동체 및 교육 시스템 전반의 변화를 이끄는 협력</p>
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2 class="section-title">현장 적용 예시: 노르웨이</h2>
-      <p>
-        노르웨이는 티칭 콤파스를 교사 교육, AI 통합, 웰빙 정책에 적용하고 있습니다. 이는 OECD 프레임워크가 <span class="highlight">글로벌 비전을 기반으로 하면서도 지역 맥락에 유연하게 적용</span>될 수 있음을 보여주는 사례입니다.
-      </p>
-    </section>
-
-    <section>
-      <h2 class="section-title">교사 역량의 네 기둥</h2>
-      <ul class="list-decimal pl-6 space-y-2">
-        <li><span class="highlight">지식</span>: 교육과정, 교수법, 자기이해, 세계시민성, AI 이해 등</li>
-        <li><span class="highlight">기술</span>: 비판적 사고, 문제해결, 창의성, 디지털 활용, 협력적 설계</li>
-        <li><span class="highlight">태도</span>: 성장 마인드셋, 공감, 자율성, 회복탄력성</li>
-        <li><span class="highlight">가치</span>: 정의, 존엄, 지속가능성, 연대</li>
-      </ul>
+      <h2 class="section-title">교사 역량 인포그래픽</h2>
+      <img src="https://i.ibb.co/SJzPhvH/teacher-competencies.png" alt="Teacher Competency Wheel" class="mx-auto w-full max-w-3xl rounded shadow">
+      <p class="text-center text-sm text-gray-600 mt-2">지식, 기술, 태도, 가치 통합: 복잡한 시대의 교사 핵심 능력</p>
     </section>
 
     <section>
       <h2 class="section-title">마무리</h2>
-      <p>
-        티칭 콤파스는 단순한 문서가 아닌 교육 혁신의 촉진제입니다. 교사가 전문성과 인간다움을 기반으로 미래를 설계할 수 있도록 돕는 이 프레임워크는 모든 교육 구성원이 함께 사용하고, 공동의 비전을 공유할 수 있도록 설계되었습니다.
+      <p class="text-lg">
+        티칭 콤파스는 OECD가 제안하는 교육 미래의 나침반입니다. 이 프레임워크는 전 세계 교사들이 자신의 전문성을 바탕으로 학생의 성장을 돕고,
+        교육과정 변화의 동반자로서 활약할 수 있도록 설계되었습니다.
       </p>
     </section>
   </main>
 
   <footer class="bg-gray-800 text-white text-center p-4">
-    <p>&copy; 2025 OECD | OECD Teaching Compass 기반 제작</p>
+    <p>&copy; 2025 OECD | Teaching Compass 한국어 시각화</p>
   </footer>
 </body>
 </html>
