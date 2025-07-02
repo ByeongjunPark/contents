@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사회와 문화 교육 웹페이지</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: #2c5282;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #a0aec0;
+            padding-bottom: 0.5rem;
+        }
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+        /* Subheading style for '핵심 아이디어', '내용 요소', '성취 기준' */
+        .card-title {
+            font-size: 1.6rem; /* Slightly larger for more emphasis */
+            font-weight: 700; /* Bolder */
+            color: #3182ce;
+            margin-top: 2rem; /* Increased margin-top for better separation */
+            margin-bottom: 1rem; /* Adjusted margin-bottom */
+            padding-bottom: 0.25rem; /* Small padding at bottom */
+            border-bottom: 1px solid #a0aec0; /* Subtle line below subheading */
+        }
+        .accordion-header {
+            background-color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #2d3748;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: #cbd5e0;
+        }
+        .accordion-content {
+            background-color: #f7fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            overflow: hidden; /* Ensure content is hidden when max-height is 0 */
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Add padding to transition */
+            max-height: 0; /* Default hidden state */
+            padding-top: 0; /* Adjust padding for smooth transition */
+            padding-bottom: 0; /* Adjust padding for smooth transition */
+        }
+        .accordion-content.active {
+            max-height: fit-content; /* Use fit-content to automatically adjust to content height */
+            padding-top: 1rem; /* Restore padding when active */
+            padding-bottom: 1rem; /* Restore padding when active */
+        }
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.active .arrow {
+            transform: rotate(90deg);
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        ol {
+            list-style-type: decimal;
+            margin-left: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        li {
+            margin-bottom: 0.75rem; /* Increased margin-bottom for more line breaks between items */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="text-4xl font-bold">사회와 문화 교육 웹페이지</h1>
+            <p class="mt-2 text-lg">사회와 문화를 더 깊이 이해하기 위한 학습 자료</p>
+        </header>
+
+        <!-- 1. 사회와 문화 과목 소개 개요 -->
+        <section class="card">
+            <h2 class="section-title">1. 사회와 문화 과목 소개 개요</h2>
+            <div class="p-4">
+                <p class="mb-4">
+                    '사회와 문화' 과목은 개인이 다양한 관점과 문화를 가진 타인들과 상호 작용하며 살아가는 사회적 존재임을 인식하고, 사회 구조의 영향을 받는 동시에 사회를 변화시키는 주체로서 민주시민 역량을 함양하기 위해 개설되었습니다.
+                </p>
+                <p class="mb-4">
+                    학생들이 사회현상에 관심을 갖고 능동적으로 참여할 수 있도록 사회학과 문화 인류학의 기본 개념과 이론 및 관점을 제시합니다. 사회과학적 탐구 활동을 통해 자료를 수집하고 비판적으로 분석하여 합리적으로 의사 결정하며, 협력적 의사소통을 통해 다양한 관점과 문화를 존중하는 태도를 함양하도록 구성되었습니다.
+                </p>
+                <p>
+                    이 과목을 통해 학생들은 사회현상 연구 방법 및 자료 수집 방법을 학습하고 과학적인 탐구를 수행하여 스스로 지식을 구성하는 경험을 할 수 있습니다. 또한 현대 사회의 변동 양상 및 불평등 양상을 분석하고 대응 방안을 마련하며, 문화 다양성 이해와 사회적 소수자에 대한 공감을 바탕으로 차이를 존중하고 공존을 지향하는 사회를 이룩하기 위한 대안을 모색합니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. 사회와 문화 각 단원 별 주요 내용 핵심 정리 -->
+        <section class="card">
+            <h2 class="section-title">2. 사회와 문화 각 단원 별 주요 내용 핵심 정리</h2>
+
+            <!-- Accordion for each unit -->
+            <div class="accordion-container">
+                <!-- Unit 1: 사회현상의 이해와 탐구 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>1단원: 사회현상의 이해와 탐구</span>
+                        <span class="arrow">></span>
+                    </div>
+                    <div class="accordion-content">
+                        <h3 class="card-title">핵심 아이디어</h3>
+                        <ul>
+                            <li>사회현상은 다양한 관점을 통해 이해할 수 있다.</li>
+                            <li>사회현상은 다양한 방법을 통해 연구할 수 있고, 탐구를 수행할 때에는 과학적 절차와 연구 윤리를 준수해야 한다.</li>
+                        </ul>
+                        <h3 class="card-title">내용 요소</h3>
+                        <ul>
+                            <li>사회현상의 특징, 사회학적 상상력, 사회현상을 이해하는 관점 (기능론, 갈등론, 상징적 상호 작용론 등)</li>
+                            <li>양적 연구 방법과 질적 연구 방법의 특징 및 연구 절차</li>
+                            <li>다양한 자료 수집 방법 (문헌 연구법, 질문지법, 면접법, 참여 관찰법 등)</li>
+                            <li>사회현상의 탐구, 연구자의 가치 중립과 연구 윤리</li>
+                        </ul>
+                        <h3 class="card-title">성취 기준</h3>
+                        <ul>
+                            <li>사회현상의 특징 이해 및 사회학적 상상력 인식, 다양한 관점 비교.</li>
+                            <li>양적/질적 연구 방법 특징 및 절차 비교, 연구 사례 분석.</li>
+                            <li>다양한 자료 수집 방법 특징 비교, 연구 사례 분석.</li>
+                            <li>연구자의 가치 개입 및 연구 윤리 쟁점 토론, 연구 윤리 준수 탐구 수행.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Unit 2: 사회 구조와 사회 변동 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>2단원: 사회 구조와 사회 변동</span>
+                        <span class="arrow">></span>
+                    </div>
+                    <div class="accordion-content">
+                        <h3 class="card-title">핵심 아이디어</h3>
+                        <ul>
+                            <li>개인은 사회 구조의 영향을 받는 존재인 동시에 사회 구조에 영향을 미치는 존재이다.</li>
+                            <li>사회 변동은 여러 요인의 영향을 받으며 다양한 양상으로 나타난다.</li>
+                        </ul>
+                        <h3 class="card-title">내용 요소</h3>
+                        <ul>
+                            <li>사회 구조와 사회화, 사회화에 대한 관점</li>
+                            <li>사회 집단과 사회 조직의 유형 및 변화</li>
+                            <li>일탈 행동과 일탈 이론 (아노미 이론, 차별 교제 이론, 낙인 이론, 비판 범죄학 이론 등), 사회 통제의 유형 (내적 통제, 외적 통제, 공식적 통제, 비공식적 통제)</li>
+                            <li>사회 변동 요인과 현대 사회의 변동 양상 (정보 사회로의 이행, 세계화, 저출산 및 고령화 등), 사회 운동의 유형과 특징</li>
+                        </ul>
+                        <h3 class="card-title">성취 기준</h3>
+                        <ul>
+                            <li>사회 구조와 개인의 관계 이해, 사회화 과정 및 이론적 관점 비교.</li>
+                            <li>사회 집단 및 사회 조직의 유형과 변화 양상 이해, 개인에 미치는 영향 설명.</li>
+                            <li>일탈 행동의 발생 요인 및 일탈 이론 비교, 사회 통제의 필요성 및 문제점 분석.</li>
+                            <li>사회 변동 요인 및 현대 사회 변동 양상 설명, 사회 운동 유형과 특징 탐구.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Unit 3: 일상 문화와 문화 변동 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>3단원: 일상 문화와 문화 변동</span>
+                        <span class="arrow">></span>
+                    </div>
+                    <div class="accordion-content">
+                        <h3 class="card-title">핵심 아이디어</h3>
+                        <ul>
+                            <li>대중문화는 다양한 관점에서 분석될 수 있으며, 현대 사회에서 미디어는 문화의 생산과 공유에 영향을 미친다.</li>
+                            <li>문화는 여러 요인의 영향을 받으며 지속적으로 변동하며 문화 다양성에 대한 긍정적 태도가 필요하다.</li>
+                        </ul>
+                        <h3 class="card-title">내용 요소</h3>
+                        <ul>
+                            <li>대중문화를 바라보는 관점 (리비스주의, 문화 산업론, 문화주의, 취향 문화론 등)</li>
+                            <li>미디어 효과 이론 (침묵의 나선 이론, 문화 배양 이론, 프레이밍 이론, 의제 설정 이론 등), 미디어 메시지의 분석과 생산</li>
+                            <li>주류 문화와 하위문화 (대항 문화, 지역 문화, 세대 문화, 이주민 문화 등), 이주민 문화에 대한 관점 (동화주의, 다문화주의), 다문화 사회와 문화 다양성</li>
+                            <li>문화 변동의 다양한 요인과 양상, 문화의 세계화</li>
+                        </ul>
+                        <h3 class="card-title">성취 기준</h3>
+                        <ul>
+                            <li>대중문화에 대한 다양한 관점 비교, 개인과 사회에 미치는 영향 토의.</li>
+                            <li>미디어 효과 이해, 미디어 메시지 비판적 분석 및 대안적 메시지 생산 참여.</li>
+                            <li>하위문화와 주류 문화 관계 이해, 이주민 문화에 대한 관점 비교, 문화 다양성 증진 방안 제시.</li>
+                            <li>문화 변동의 요인과 양상, 문제점 이해, 문화의 세계화 쟁점 탐구.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Unit 4: 사회 불평등과 사회 복지 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>4단원: 사회 불평등과 사회 복지</span>
+                        <span class="arrow">></span>
+                    </div>
+                    <div class="accordion-content">
+                        <h3 class="card-title">핵심 아이디어</h3>
+                        <ul>
+                            <li>현대 사회에서는 다양한 불평등과 차별 현상이 나타나고 있다.</li>
+                            <li>현대 사회는 인간다운 생활을 보장하고 삶의 질 향상을 위한 복지 국가를 지향한다.</li>
+                        </ul>
+                        <h3 class="card-title">내용 요소</h3>
+                        <ul>
+                            <li>사회 불평등 현상을 이해하는 관점, 사회 이동과 사회 계층 구조의 유형 및 특징</li>
+                            <li>다양한 사회 불평등 양상 (빈곤, 성 불평등, 사회적 소수자 차별 문제 등)과 해결 방안</li>
+                            <li>복지 국가의 발전 과정, 사회 복지 제도의 유형과 특징 (사회 보험, 공공 부조, 사회 서비스 등), 현대 사회의 복지 관련 쟁점 (보편적 복지 vs 선별적 복지, 아동 복지, 노인 복지 등)</li>
+                        </ul>
+                        <h3 class="card-title">성취 기준</h3>
+                        <ul>
+                            <li>사회 불평등 현상 이해 관점 비교, 사회 이동과 사회 계층 구조 유형 및 특징 분석.</li>
+                            <li>다양한 사회 불평등 양상 분석, 차별받는 사람 입장 공감, 해결 방안 모색.</li>
+                            <li>복지 국가 발전 과정 이해, 사회 복지 제도 유형과 특징 비교, 사회 복지 쟁점 토론.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 사회와 문화 수행평가 예시 -->
+        <section class="card">
+            <h2 class="section-title">3. 사회와 문화 수행평가 예시</h2>
+            <div class="p-4">
+                <p class="mb-4">
+                    사회와 문화 과목의 수행평가는 단순 암기보다는 기본 개념 및 이론을 학생 자신의 삶과 관련시켜 이해하고, 사회적 사건이나 사례에 적용하여 활용할 수 있는지를 평가하는 데 중점을 둡니다. 또한 자기주도적으로 자료를 수집하고 비판적으로 분석하여 합리적으로 의사를 결정하고 문제 해결 방안을 제시할 수 있는 과정을 중시합니다.
+                </p>
+                <h3 class="card-title">주요 수행평가 방법</h3>
+                <ul>
+                    <li><strong>토론 및 발표:</strong> 특정 사회 현상이나 사회 문제에 대한 다양한 관점을 비교하고, 자신의 의견을 논리적으로 제시하며 토론하는 활동.</li>
+                    <li><strong>논술:</strong> 주어진 주제에 대해 사회학적 개념과 이론을 바탕으로 자신의 주장을 펼치고 논증하는 글쓰기.</li>
+                    <li><strong>탐구 보고서 작성 및 발표:</strong> 학생의 일상생활과 밀접하게 관련된 사회 현상을 주제로 선정하여 직접 자료를 수집, 분석하고 결론을 도출하는 탐구 보고서를 작성하고 발표. (예: 특정 미디어 콘텐츠의 사회적 영향 분석, 지역 사회의 문화 다양성 실태 조사 등)</li>
+                    <li><strong>모둠 활동 및 프로젝트:</strong> 모둠별로 특정 사회 문제 해결을 위한 프로젝트를 기획하고 수행하는 활동. (예: 저출산 문제 해결을 위한 정책 제안 프로젝트, 사회적 소수자 인권 증진 캠페인 기획 등)</li>
+                    <li><strong>미디어 콘텐츠 창작 활동:</strong> 미디어가 생산하는 메시지를 비판적으로 분석하고, 대안적인 메시지를 담은 미디어 콘텐츠 (영상물, 웹툰, 카드뉴스 등)를 직접 제작.</li>
+                    <li><strong>사회 참여 활동:</strong> 학생들이 관심 있는 사회문제를 선정하고, 민주 시민으로서 온오프라인의 다양한 수단을 활용하여 해당 문제 해결에 참여하는 활동. (예: 환경 보호 캠페인 참여, 지역 사회 봉사 활동 등)</li>
+                    <li><strong>학습 일지 작성:</strong> 학생 스스로 자신의 학습 과정과 학습 전략을 점검하고 개선할 수 있도록 사회와 문화 과목 학습 일지를 작성하여 학습에 대한 성찰 기회 제공.</li>
+                </ul>
+                <p class="mt-4">
+                    이러한 수행평가를 통해 학생들은 비판적 사고력, 문제 해결 능력, 합리적 의사 결정 능력, 의사소통 및 협업 능력, 문화 다양성 존중, 인류 보편적 가치 존중 등의 역량을 함양할 수 있습니다.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript for accordion functionality
+        function toggleAccordion(element) {
+            const content = element.nextElementSibling;
+            element.classList.toggle('active');
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                content.style.maxHeight = "0"; // Collapse
+                content.style.paddingTop = '0';
+                content.style.paddingBottom = '0';
+            } else {
+                // Set max-height to 'fit-content' to automatically expand
+                content.style.maxHeight = 'fit-content';
+                content.style.paddingTop = '1rem'; // Restore padding
+                content.style.paddingBottom = '1rem'; // Restore padding
+            }
+        }
+
+        // Initialize accordion state on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                // No default open state, user can click to open.
+            });
+        });
+    </script>
+</body>
+</html>
