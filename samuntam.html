@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사회문제 탐구 과목 소개</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: #2c5282;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i {
+            margin-right: 0.75rem;
+            color: #4a90e2;
+        }
+        .subsection-title {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            color: #4a5568;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        .subsection-title i {
+            margin-right: 0.5rem;
+            color: #63b3ed;
+        }
+        .list-item {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+        }
+        .list-item::before {
+            content: "\f00c"; /* Font Awesome check icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #4a90e2;
+            display: inline-block;
+            width: 1.2em;
+            margin-top: 0.2em;
+            margin-right: 0.5em;
+            flex-shrink: 0;
+        }
+        .button {
+            display: inline-block;
+            background-color: #f6ad55;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover {
+            background-color: #ed8936;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .feature-card, .unit-summary-card { /* Combined for clickability */
+            cursor: pointer; /* Indicate clickable */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card {
+            background-color: #e0f2f7; /* Light blue background for cards */
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card i {
+            font-size: 2.5rem; /* Larger icons for cards */
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-weight: 700;
+            color: #2c5282;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+        .unit-summary-card {
+            background-color: #f7fafc; /* Lighter background for unit summaries */
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #63b3ed; /* Blue border on left */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .unit-summary-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.875rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #718096;
+            transition: color 0.2s ease;
+        }
+        .modal-close-button:hover {
+            color: #333;
+        }
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c5282;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .header {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header p {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .subsection-title {
+                font-size: 1.125rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            .modal-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+            .modal-title {
+                font-size: 1.25rem;
+            }
+            .modal-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="text-4xl font-bold mb-2">사회문제 탐구 과목 소개</h1>
+            <p class="text-xl">주체적인 탐구를 통해 사회문제 해결 능력을 키우는 과목</p>
+        </header>
+
+        <main>
+            <!-- 1. 사회문제 탐구 과목의 특성 (Infographic Style) -->
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i>1. 사회문제 탐구 과목의 특성</h2>
+                <p class="mb-6 text-center text-lg text-gray-600">
+                    '사회문제 탐구'는 학생들이 주도적으로 사회문제를 탐색하고 해결하는 과정을 통해
+                    <span class="font-bold text-blue-600">민주 시민으로서의 핵심 역량</span>을 키우는 과목입니다.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 feature-grid">
+                    <div class="feature-card" data-title="주체적 탐구" data-description="학생들이 스스로 탐구할 사회문제를 선정하고, 필요한 자료를 직접 수집하고 분석하여 문제 해결을 위한 창의적인 방안을 모색하는 과정입니다. 이는 자기 주도 학습 능력을 크게 향상시킵니다.">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>주체적 탐구</h3>
+                        <p class="text-sm text-gray-700">스스로 문제 선정, 자료 수집·분석, 해결 방안 모색</p>
+                    </div>
+                    <div class="feature-card" data-title="실생활 연계" data-description="교과서 속 지식에만 머무르지 않고, 학생들이 일상생활에서 직접 마주하거나 공감할 수 있는 다양한 사회문제 사례들을 다룹니다. 이를 통해 학습의 흥미와 몰입도를 높이고 실제 문제 해결 능력을 기릅니다.">
+                        <i class="fas fa-home"></i>
+                        <h3>실생활 연계</h3>
+                        <p class="text-sm text-gray-700">학생들의 실제 삶과 관련된 사회문제 다룸</p>
+                    </div>
+                    <div class="feature-card" data-title="민주 시민 역량" data-description="사회문제의 원인을 깊이 있게 탐구하고 해결 방안을 찾는 과정을 통해, 복잡한 문제를 분석하고 합리적인 결정을 내리며, 더 나아가 사회에 적극적으로 참여하는 민주 시민으로서의 핵심 자질을 함양합니다.">
+                        <i class="fas fa-users"></i>
+                        <h3>민주 시민 역량</h3>
+                        <p class="text-sm text-gray-700">문제 해결력, 의사 결정, 사회 참여 능력 함양</p>
+                    </div>
+                    <div class="feature-card" data-title="진로 탐색" data-description="사회문제 해결을 위한 다양한 사회적 노력과 관련된 직업들을 탐색하는 기회를 제공합니다. 사회과학 계열뿐만 아니라 다양한 분야의 진로를 고민하는 학생들에게 실질적인 도움을 줍니다.">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>진로 탐색</h3>
+                        <p class="text-sm text-gray-700">사회과학 계열 직업 탐색 기회 제공</p>
+                    </div>
+                    <div class="feature-card" data-title="기능 중심" data-description="단순히 이론적인 지식을 암기하는 것을 넘어, 학생들이 직접 문제를 해결하는 '기능'에 중점을 둡니다. 프로젝트 학습, 탐구 학습 등 활동 중심의 교수·학습 방법을 통해 실질적인 역량을 키웁니다.">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>기능 중심</h3>
+                        <p class="text-sm text-gray-700">이론보다 실제 탐구 활동 및 문제 해결 노력 중점</p>
+                    </div>
+                    <div class="feature-card" data-title="비판적 사고" data-description="사회문제를 바라보는 다양한 관점을 이해하고, 주어진 정보나 의견을 그대로 수용하기보다 합리적으로 분석하고 평가하는 능력을 기릅니다. 이를 통해 편향되지 않고 균형 잡힌 시각을 갖도록 돕습니다.">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>비판적 사고</h3>
+                        <p class="text-sm text-gray-700">다양한 관점 분석 및 합리적 해결 능력 신장</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. 사회문제 탐구 과목 단원 별 특징적 내용 -->
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-book-open"></i>2. 사회문제 탐구 과목 단원 별 특징적 내용</h2>
+                <p class="mb-4 text-gray-600">사회문제 탐구 과목은 학생들이 다양한 층위의 사회문제를 이해하고 해결하는 능력을 기르도록 구성되어 있습니다.</p>
+
+                <div class="subsection-title"><i class="fas fa-search"></i>가. 사회문제의 이해</div>
+                <div class="unit-summary-card" data-title="가. 사회문제의 이해" data-description="사회문제 탐구의 첫걸음! 사회문제가 무엇인지 이해하고, 이를 과학적으로 탐구하는 방법과 절차를 배웁니다. 자료 수집 방법과 탐구 과정에서 발생할 수 있는 윤리적 문제까지 폭넓게 다룹니다.">
+                    <p class="text-sm text-gray-800">사회문제 탐구의 기초를 다지는 단원! 문제의 의미, 탐구 방법, 윤리적 쟁점 등을 학습하며 과학적 탐구 능력을 키웁니다.</p>
+                </div>
+                <ul class="list-none pl-0">
+                    <li class="list-item">사회문제의 의미와 특징, 다양한 관점 이해</li>
+                    <li class="list-item">사회문제 탐구를 위한 과학적 방법과 절차, 자료 수집 방법 학습</li>
+                    <li class="list-item">탐구 과정에서 발생할 수 있는 윤리적 쟁점 파악 및 해결 방안 모색</li>
+                    <li class="list-item">통계적 조사 기관 및 관련 직업 탐구</li>
+                </ul>
+
+                <div class="subsection-title"><i class="fas fa-gamepad"></i>나. 게임 과몰입</div>
+                <div class="unit-summary-card" data-title="나. 게임 과몰입" data-description="정보사회에서 청소년들이 겪을 수 있는 대표적인 문제인 게임 과몰입을 집중적으로 탐구합니다. 과몰입의 원인을 분석하고, 해결 방안을 모색하며, 관련 기관과 직업을 알아봅니다.">
+                    <p class="text-sm text-gray-800">청소년의 일상과 밀접한 게임 과몰입 문제를 정보사회 맥락에서 탐구합니다. 원인 분석부터 해결 방안 모색까지!</p>
+                </div>
+                <ul class="list-none pl-0">
+                    <li class="list-item">정보사회의 의미와 특징, 다양한 사회문제 조사</li>
+                    <li class="list-item">게임 과몰입 문제 인식 및 탐구 계획 수립</li>
+                    <li class="list-item">게임 과몰입 원인에 대한 다양한 관점 파악 및 해결 방안 도출</li>
+                    <li class="list-item">정보사회 문제 해결을 위한 제도적 노력 및 사회 기관, 관련 직업 탐구</li>
+                </ul>
+
+                <div class="subsection-title"><i class="fas fa-school"></i>다. 학교 폭력</div>
+                <div class="unit-summary-card" data-title="다. 학교 폭력" data-description="학교 공동체에서 발생하는 심각한 문제인 학교 폭력을 범죄 현황과 연계하여 깊이 있게 다룹니다. 학교 폭력의 원인을 파악하고, 실질적인 해결 방안을 토의하며, 관련 법률 및 기관의 역할을 이해합니다.">
+                    <p class="text-sm text-gray-800">학교 공동체에서 발생하는 폭력 문제의 심각성을 인식하고, 범죄 현황 분석을 통해 학교 폭력 해결을 위한 실질적인 방안을 탐구합니다.</p>
+                </div>
+                <ul class="list-none pl-0">
+                    <li class="list-item">범죄 현황 분석 및 유형 분류 (문헌연구법 활용)</li>
+                    <li class="list-item">학교 폭력 문제의 심각성 인식 및 탐구 계획 수립</li>
+                    <li class="list-item">학교 폭력 원인에 대한 다양한 관점 확인 및 해결 방안 도출</li>
+                    <li class="list-item">범죄 문제 해결을 위한 제도적 노력 및 사회 기관, 관련 직업 탐구</li>
+                </ul>
+
+                <div class="subsection-title"><i class="fas fa-users-line"></i>라. 저출산·고령화에 따른 문제</div>
+                <div class="unit-summary-card" data-title="라. 저출산·고령화에 따른 문제" data-description="우리 사회의 중요한 인구 문제인 저출산·고령화 현상을 통계 자료를 바탕으로 분석합니다. 이로 인해 발생할 수 있는 사회문제들을 탐색하고, 다양한 해결 대안을 평가하며, 미래 사회의 직업 변화를 예측해봅니다.">
+                    <p class="text-sm text-gray-800">국가적 인구 문제인 저출산·고령화 현상을 통계 자료로 분석하고, 사회적 의미와 해결 방안, 미래 직업 변화까지 탐색합니다.</p>
+                </div>
+                <ul class="list-none pl-0">
+                    <li class="list-item">출생과 사망의 사회적 의의, 인구 구조 변화 파악</li>
+                    <li class="list-item">통계 자료를 통한 저출산·고령화 현황 분석 및 탐구 계획 수립</li>
+                    <li class="list-item">저출산·고령화 원인에 대한 다양한 관점 파악 및 대안 평가 (비용 편익 분석 등)</li>
+                    <li class="list-item">저출산·고령화 사회 변화에 따른 직업 수요 변화 조사</li>
+                </ul>
+
+                <div class="subsection-title"><i class="fas fa-handshake-angle"></i>마. 사회적 소수자에 대한 차별</div>
+                <div class="unit-summary-card" data-title="마. 사회적 소수자에 대한 차별" data-description="지구촌 곳곳에서 나타나는 사회적 소수자에 대한 편견과 차별 문제를 다룹니다. 대중매체 분석을 통해 차별 양상을 파악하고, 인권 문제 해결을 위한 사회적 노력과 관련 직업을 알아봅니다.">
+                    <p class="text-sm text-gray-800">지구촌 곳곳에서 발생하는 사회적 소수자 차별 문제를 인식하고, 대중매체 분석을 통해 해결 방안을 창의적으로 모색합니다.</p>
+                </div>
+                <ul class="list-none pl-0">
+                    <li class="list-item">사회적 소수자 및 차별의 의미 이해, 대중매체를 통한 차별 양상 파악</li>
+                    <li class="list-item">사회적 소수자 문제 인식 및 탐구 계획 수립</li>
+                    <li class="list-item">편견과 차별 발생 원인에 대한 다양한 관점 파악 및 해결 방안 도출</li>
+                    <li class="list-item">사회적 소수자 인권 문제 해결을 위한 제도 및 기구, 관련 직업 탐구</li>
+                </ul>
+
+                <div class="subsection-title"><i class="fas fa-flask"></i>바. 사회문제 사례 연구</div>
+                <div class="unit-summary-card" data-title="바. 사회문제 사례 연구" data-description="앞서 배운 모든 탐구 과정을 종합하여 학생들이 스스로 하나의 사회문제를 선정하고, 계획을 수립하여 해결 방안을 직접 실천해보는 단원입니다. 탐구 보고서 작성 및 발표를 통해 문제 해결 역량을 완성합니다.">
+                    <p class="text-sm text-gray-800">지금까지 학습한 모든 탐구 경험을 총동원하여 자신만의 사회문제를 선정하고, 해결 방안을 실천하며 보고서를 작성하고 발표합니다.</p>
+                </div>
+                <ul class="list-none pl-0">
+                    <li class="list-item">자신이 경험하는 사회문제 중 하나를 탐구 대상으로 선정하고, 선정 이유 설명</li>
+                    <li class="list-item">탐구 계획 수립, 다양한 자료 수집 방법을 활용한 현황 분석</li>
+                    <li class="list-item">다양한 관점 파악 및 토의를 통한 해결 방안 도출</li>
+                    <li class="list-item">해결 방안 실천 및 탐구 과정 보고서 작성, 발표</li>
+                </ul>
+            </section>
+
+            <!-- 3. 사회문제 탐구 평가 주안점 (Infographic Style - Student-centric) -->
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-clipboard-check"></i>3. 사회문제 탐구 평가, 이렇게 이루어져요!</h2>
+                <p class="mb-6 text-center text-lg text-gray-600">
+                    '사회문제 탐구' 과목은 여러분이 <span class="font-bold text-green-600">스스로 문제를 찾고 해결하는 과정</span>을 중요하게 평가합니다.
+                    어떤 활동을 통해 여러분의 성장을 보여줄 수 있을까요?
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 feature-grid">
+                    <div class="feature-card" data-title="1. 나만의 사회문제 탐구 보고서" data-description="여러분 주변의 사회문제 중 하나를 선택해 <span class='font-bold text-blue-600'>사회과학 연구 방법(예: 설문조사, 인터뷰, 통계 분석)을 활용</span>하여 깊이 있게 탐구하고, 그 과정을 <span class='font-bold text-blue-600'>보고서로 작성</span>하는 활동입니다. 문제 선정 이유, 탐구 과정, 해결 방안 모색까지 여러분의 주도적인 노력이 평가됩니다.<br><br>예시: '우리 동네 골목길 쓰레기 문제, 어떻게 해결할까?'라는 주제로 주민 설문조사를 실시하고, 그 결과를 바탕으로 보고서를 쓰는 활동">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>1. 나만의 사회문제 탐구 보고서</h3>
+                        <p class="text-sm text-gray-700">관심 있는 사회문제, 직접 탐구하고 보고서로!</p>
+                    </div>
+                    <div class="feature-card" data-title="2. 함께 만드는 사회문제 해결 프로젝트" data-description="친구들과 <span class='font-bold text-blue-600'>모둠을 이루어 사회문제를 해결하기 위한 프로젝트를 기획하고 실행</span>하는 활동입니다. 역할 분담, 협력 과정, 그리고 실제 문제 해결을 위한 <span class='font-bold text-blue-600'>창의적인 아이디어와 실천</span>이 중요하게 평가됩니다.<br><br>예시: '학교 폭력 예방을 위한 캠페인 영상 제작 및 상영', '저출산 문제 해결을 위한 청소년 아이디어 공모전 참여' 등">
+                        <i class="fas fa-users-gear"></i>
+                        <h3>2. 함께 만드는 사회문제 해결 프로젝트</h3>
+                        <p class="text-sm text-gray-700">팀워크로 사회문제를 해결하고 실천해요!</p>
+                    </div>
+                    <div class="feature-card" data-title="3. 사회문제 전문가와의 만남, 나의 진로 탐색" data-description="사회문제 해결에 기여하는 다양한 <span class='font-bold text-blue-600'>사회과학 관련 직업(예: 사회복지사, 정책 연구원, 시민단체 활동가)</span>에 대해 조사하고, <span class='font-bold text-blue-600'>관련 기관을 방문하거나 전문가를 인터뷰</span>하는 활동입니다. 이를 통해 여러분의 진로를 구체적으로 탐색하고, 사회에 기여하려는 의지를 보여줄 수 있습니다.<br><br>예시: '우리 지역 다문화 가정 지원 센터'를 방문하여 사회복지사 인터뷰 후 진로 보고서 작성">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>3. 사회문제 전문가와의 만남, 나의 진로 탐색</h3>
+                        <p class="text-sm text-gray-700">사회문제 해결 직업 탐색으로 미래를 그려봐요!</p>
+                    </div>
+                    <div class="feature-card" data-title="4. 나의 탐구 성장 기록, 포트폴리오" data-description="수업 시간 동안 진행한 <span class='font-bold text-blue-600'>모든 탐구 활동(자료 수집, 아이디어 스케치, 토론 참여 기록, 발표 대본 등)을 모아 포트폴리오</span>를 만듭니다. 여러분의 <span class='font-bold text-blue-600'>노력과 성장 과정, 그리고 비판적 사고 능력</span>을 한눈에 보여줄 수 있는 중요한 평가 자료가 됩니다.<br><br>예시: '게임 과몰입 문제 탐구' 과정에서 수집한 통계 자료, 토론 노트, 개인 의견 정리 등을 모아 포트폴리오로 제출">
+                        <i class="fas fa-book-open"></i>
+                        <h3>4. 나의 탐구 성장 기록, 포트폴리오</h3>
+                        <p class="text-sm text-gray-700">탐구의 모든 과정을 기록하고 성장해요!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 수행평가 사례 버튼 -->
+            <section class="section text-center">
+                <h2 class="section-title"><i class="fas fa-file-alt"></i>사회문제 탐구 수행평가 사례</h2>
+                <p class="mb-6 text-gray-600">실제 사회문제 탐구 과목의 수행평가 사례를 확인해보세요!</p>
+                <a href="https://joo.is/%EC%B0%BD%EC%97%AC%EC%82%AC%EB%AC%B8%ED%83%90" target="_blank" class="button">
+                    <i class="fas fa-external-link-alt mr-2"></i>수행평가 사례 보러가기
+                </a>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 사회문제 탐구 과목 소개. 모든 권리 보유.</p>
+        </footer>
+
+        <!-- Modal Structure -->
+        <div id="infoModal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close-button" id="closeModalBtn">&times;</button>
+                <h3 id="modalTitle" class="modal-title"></h3>
+                <p id="modalDescription" class="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('infoModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            // Function to open the modal
+            function openModal(title, description) {
+                modalTitle.innerHTML = title; // Use innerHTML to render bold tags
+                modalDescription.innerHTML = description; // Use innerHTML to render bold tags
+                modal.classList.add('show');
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                modal.classList.remove('show');
+            }
+
+            // Event listeners for feature cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.dataset.title;
+                    const description = card.dataset.description;
+                    openModal(title, description);
+                });
+            });
+
+            // Event listeners for unit summary cards
+            document.querySelectorAll('.unit-summary-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.dataset.title;
+                    const description = card.dataset.description;
+                    openModal(title, description);
+                });
+            });
+
+            // Event listener for close button
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Event listener to close modal when clicking outside the content
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
