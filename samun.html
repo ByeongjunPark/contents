@@ -6,6 +6,8 @@
     <title>사회와 문화 교과박람회 설명자료</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -13,49 +15,63 @@
             color: #333;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 2rem;
         }
         .header {
             background-color: #4a90e2;
             color: white;
-            padding: 1.5rem 1rem;
+            padding: 2rem;
+            border-radius: 12px;
             text-align: center;
-            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
         .section-title {
             font-size: 1.875rem; /* text-3xl */
             font-weight: 700; /* font-bold */
             color: #2c5282;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #a0aec0;
-            padding-bottom: 0.5rem;
-        }
-        .card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
         }
-        /* Subheading style for '핵심 아이디어', '내용 요소', '성취 기준' */
-        .card-title {
-            font-size: 1.6rem; /* Slightly larger for more emphasis */
-            font-weight: 700; /* Bolder */
-            color: #3182ce;
-            margin-top: 2rem; /* Increased margin-top for better separation */
-            margin-bottom: 1rem; /* Adjusted margin-bottom */
-            padding-bottom: 0.25rem; /* Small padding at bottom */
-            border-bottom: 1px solid #a0aec0; /* Subtle line below subheading */
+        .section-title i {
+            margin-right: 0.75rem;
+            color: #4a90e2;
+        }
+        .card-title { /* Used for "핵심 아이디어", "내용 요소", "성취 기준" */
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            color: #4a5568;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        .card-title i {
+            margin-right: 0.5rem;
+            color: #63b3ed;
         }
         .accordion-header {
             background-color: #e2e8f0;
             padding: 1rem;
             border-radius: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.5rem; /* Default margin-bottom */
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -67,21 +83,23 @@
         .accordion-header:hover {
             background-color: #cbd5e0;
         }
+        /* No direct margin on active header, margin will be on content */
         .accordion-content {
             background-color: #f7fafc;
             padding: 1rem;
             border-radius: 0.5rem;
-            margin-bottom: 0.5rem;
-            overflow: hidden; /* Ensure content is hidden when max-height is 0 */
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Add padding to transition */
-            max-height: 0; /* Default hidden state */
-            padding-top: 0; /* Adjust padding for smooth transition */
-            padding-bottom: 0; /* Adjust padding for smooth transition */
+            margin-bottom: 0.5rem; /* Default margin-bottom for content */
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out, margin-bottom 0.5s ease-out; /* Add margin-bottom to transition */
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
         }
+        /* Increased margin-bottom for active content to create space below it */
         .accordion-content.active {
-            /* max-height will be set by JavaScript based on content.scrollHeight */
-            padding-top: 1rem; /* Restore padding when active */
-            padding-bottom: 1rem; /* Restore padding when active */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem; /* Increased margin-bottom when active */
         }
         .arrow {
             transition: transform 0.3s ease;
@@ -100,12 +118,134 @@
             margin-bottom: 0.5rem;
         }
         li {
-            margin-bottom: 0.75rem; /* Increased margin-bottom for more line breaks between items */
+            margin-bottom: 0.75rem;
         }
-                /* Style for highlighted keywords */
         .highlight {
-            color: #1e40af; /* A darker blue for emphasis */
-            font-weight: 700; /* Bold */
+            color: #1e40af;
+            font-weight: 700;
+        }
+        .feature-card {
+            background-color: #e0f2f7;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer; /* Indicate clickable */
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-weight: 700;
+            color: #2c5282;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #718096;
+            transition: color 0.2s ease;
+        }
+        .modal-close-button:hover {
+            color: #333;
+        }
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c5282;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .header {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header p {
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .card-title {
+                font-size: 1.125rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+            .modal-title {
+                font-size: 1.25rem;
+            }
+            .modal-description {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -119,23 +259,23 @@
 
         <!-- 1. 사회와 문화 과목 소개 개요 -->
         <section class="card">
-            <h2 class="section-title">1. 사회와 문화 과목 소개 개요</h2>
-            <div class="p-4">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i>1. 사회와 문화 과목 소개 개요</h2>
+            <div class="p-4 text-gray-700">
                 <p class="mb-4">
-                    '사회와 문화' 과목은 개인이 <strong class="highlight">다양한 관점과 문화</strong>를 가진 타인들과 상호 작용하며 살아가는 <strong class="highlight">사회적 존재</strong>임을 인식하고, <strong class="highlight">사회 구조</strong>의 영향을 받는 동시에 사회를 변화시키는 주체로서 민주시민 역량을 함양하기 위해 개설되었습니다.
+                    '사회와 문화' 과목은 개인이 <strong class="highlight">다양한 관점과 문화</strong>를 가진 타인들과 지속적으로 상호 작용하며 살아가는 <strong class="highlight">사회적 존재</strong>이며, 사회 구조의 영향을 받는 동시에 사회를 변화시키는 주체라는 사실을 인식하고 민주시민으로서 사회에 참여하는 데 필요한 역량을 함양하기 위해 개설되었습니다.
                 </p>
                 <p class="mb-4">
-                    학생들이 사회현상에 관심을 갖고 능동적으로 참여할 수 있도록 사회학과 <strong class="highlight">문화 인류학</strong>의 기본 개념과 이론 및 관점을 제시합니다. <strong class="highlight">사회과학적 탐구 활동</strong>을 통해 자료를 수집하고 비판적으로 분석하여 합리적으로 의사 결정하며, 협력적 의사소통을 통해 다양한 관점과 <strong class="highlight">문화를 존중하는 태도</strong>를 함양하도록 구성되었습니다.
+                    학생들이 사회현상에 관심을 갖고 능동적으로 참여할 수 있도록 사회학과 <strong class="highlight">문화 인류학</strong>의 기본 개념과 이론 및 관점을 제시합니다. 그리고 <strong class="highlight">사회과학적 탐구 활동</strong>을 통해 사회현상과 관련된 다양한 자료를 수집하고, 이를 비판적으로 분석하여 합리적으로 의사 결정하며, 협력적으로 의사소통하는 과정을 통해 다양한 관점과 <strong class="highlight">문화를 존중하는 태도</strong>를 함양하도록 내용을 구성하였습니다.
                 </p>
                 <p>
-                    이 과목을 통해 학생들은 <strong class="highlight">사회현상 연구 방법 및 자료 수집 방법</strong>을 학습하고 과학적인 탐구를 수행하여 스스로 지식을 구성하는 경험을 할 수 있습니다. 또한 <strong class="highlight">현대 사회의 변동 양상 및 불평등 양상</strong>을 분석하고 대응 방안을 마련하며, 문화 다양성 이해와 <strong class="highlight">사회적 소수자에 대한 공감</strong>을 바탕으로 차이를 존중하고 공존을 지향하는 사회를 이룩하기 위한 대안을 모색합니다.
+                    이 과목을 통해 학생들은 <strong class="highlight">사회현상 연구 방법 및 자료 수집 방법</strong>을 학습하고 능동적으로 과학적인 탐구를 수행함으로써 스스로 지식을 구성하는 경험을 할 수 있습니다. 또한 <strong class="highlight">현대 사회의 변동 양상 및 불평등 양상</strong>을 분석하고 대응 방안을 마련하며, 문화 다양성에 대한 이해와 <strong class="highlight">사회적 소수자에 대한 공감</strong>을 바탕으로 차이를 존중하고 공존을 지향하는 사회를 이룩하기 위한 대안을 모색하는 활동을 수행합니다.
                 </p>
             </div>
         </section>
 
         <!-- 2. 사회와 문화 각 단원 별 주요 내용 핵심 정리 -->
         <section class="card">
-            <h2 class="section-title">2. 사회와 문화 각 단원 별 주요 내용 핵심 정리</h2>
+            <h2 class="section-title"><i class="fas fa-book-open"></i>2. 사회와 문화 각 단원 별 주요 내용 핵심 정리</h2>
 
             <!-- Accordion for each unit -->
             <div class="accordion-container">
@@ -143,22 +283,22 @@
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <span>1단원: 사회현상의 이해와 탐구</span>
-                        <span class="arrow">></span>
+                        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
                     </div>
                     <div class="accordion-content">
-                        <h3 class="card-title">핵심 아이디어</h3>
+                        <h3 class="card-title"><i class="fas fa-lightbulb"></i>핵심 아이디어</h3>
                         <ul>
                             <li>사회현상을 다양한 관점을 통해 이해할 수 있다.</li>
                             <li>사회현상을 다양한 방법을 통해 연구할 수 있고, 탐구를 수행할 때에는 과학적 절차와 연구 윤리를 준수해야 한다.</li>
                         </ul>
-                        <h3 class="card-title">내용 요소</h3>
+                        <h3 class="card-title"><i class="fas fa-list-ul"></i>내용 요소</h3>
                         <ul>
                             <li>사회현상의 특징, 사회학적 상상력, 사회현상을 이해하는 관점(기능론, 갈등론, 상징적 상호 작용론 등)</li>
                             <li>양적 연구 방법과 질적 연구 방법의 특징 및 연구 절차</li>
                             <li>다양한 자료 수집 방법(문헌 연구법, 질문지법, 면접법, 참여 관찰법, 실험법 등)</li>
                             <li>사회현상의 탐구, 연구자의 가치 중립과 연구 윤리</li>
                         </ul>
-                        <h3 class="card-title">성취 기준</h3>
+                        <h3 class="card-title"><i class="fas fa-check-circle"></i>성취 기준</h3>
                         <ul>
                             <li>사회현상의 특징 이해 및 사회학적 상상력 인식, 다양한 관점 비교.</li>
                             <li>양적/질적 연구 방법 특징 및 절차 비교, 연구 사례 분석.</li>
@@ -172,22 +312,22 @@
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <span>2단원: 사회 구조와 사회 변동</span>
-                        <span class="arrow">></span>
+                        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
                     </div>
                     <div class="accordion-content">
-                        <h3 class="card-title">핵심 아이디어</h3>
+                        <h3 class="card-title"><i class="fas fa-lightbulb"></i>핵심 아이디어</h3>
                         <ul>
                             <li>개인은 사회 구조의 영향을 받는 존재인 동시에 사회 구조에 영향을 미치는 존재이다.</li>
                             <li>사회 변동은 여러 요인의 영향을 받으며 다양한 양상으로 나타난다.</li>
                         </ul>
-                        <h3 class="card-title">내용 요소</h3>
+                        <h3 class="card-title"><i class="fas fa-list-ul"></i>내용 요소</h3>
                         <ul>
                             <li>사회 구조와 사회화, 사회화에 대한 관점</li>
                             <li>사회 집단과 사회 조직의 유형 및 변화</li>
                             <li>일탈 행동과 일탈 이론 (아노미 이론, 차별 교제 이론, 낙인 이론, 비판 범죄학 이론 등), 사회 통제의 유형 (내적 통제, 외적 통제, 공식적 통제, 비공식적 통제)</li>
                             <li>사회 변동 요인과 현대 사회의 변동 양상 (정보 사회로의 이행, 세계화, 저출산 및 고령화 등), 사회 운동의 유형과 특징</li>
                         </ul>
-                        <h3 class="card-title">성취 기준</h3>
+                        <h3 class="card-title"><i class="fas fa-check-circle"></i>성취 기준</h3>
                         <ul>
                             <li>사회 구조와 개인의 관계 이해, 사회화 과정 및 이론적 관점 비교.</li>
                             <li>사회 집단 및 사회 조직의 유형과 변화 양상 이해, 개인에 미치는 영향 설명.</li>
@@ -201,22 +341,22 @@
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <span>3단원: 일상 문화와 문화 변동</span>
-                        <span class="arrow">></span>
+                        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
                     </div>
                     <div class="accordion-content">
-                        <h3 class="card-title">핵심 아이디어</h3>
+                        <h3 class="card-title"><i class="fas fa-lightbulb"></i>핵심 아이디어</h3>
                         <ul>
                             <li>대중문화는 다양한 관점에서 분석될 수 있으며, 현대 사회에서 미디어는 문화의 생산과 공유에 영향을 미친다.</li>
                             <li>문화는 여러 요인의 영향을 받으며 지속적으로 변동하며 문화 다양성에 대한 긍정적 태도가 필요하다.</li>
                         </ul>
-                        <h3 class="card-title">내용 요소</h3>
+                        <h3 class="card-title"><i class="fas fa-list-ul"></i>내용 요소</h3>
                         <ul>
                             <li>대중문화를 바라보는 관점 (리비스주의, 문화 산업론, 문화주의, 취향 문화론 등)</li>
                             <li>미디어 효과 이론 (침묵의 나선 이론, 문화 배양 이론, 프레이밍 이론, 의제 설정 이론 등), 미디어 메시지의 분석과 생산</li>
                             <li>주류 문화와 하위문화 (대항 문화, 지역 문화, 세대 문화, 이주민 문화 등), 이주민 문화에 대한 관점 (동화주의, 다문화주의), 다문화 사회와 문화 다양성</li>
                             <li>문화 변동의 다양한 요인과 양상, 문화의 세계화</li>
                         </ul>
-                        <h3 class="card-title">성취 기준</h3>
+                        <h3 class="card-title"><i class="fas fa-check-circle"></i>성취 기준</h3>
                         <ul>
                             <li>대중문화에 대한 다양한 관점 비교, 개인과 사회에 미치는 영향 토의.</li>
                             <li>미디어 효과 이해, 미디어 메시지 비판적 분석 및 대안적 메시지 생산 참여.</li>
@@ -230,21 +370,21 @@
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <span>4단원: 사회 불평등과 사회 복지</span>
-                        <span class="arrow">></span>
+                        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
                     </div>
                     <div class="accordion-content">
-                        <h3 class="card-title">핵심 아이디어</h3>
+                        <h3 class="card-title"><i class="fas fa-lightbulb"></i>핵심 아이디어</h3>
                         <ul>
                             <li>현대 사회에서는 다양한 불평등과 차별 현상이 나타나고 있다.</li>
                             <li>현대 사회는 인간다운 생활을 보장하고 삶의 질 향상을 위한 복지 국가를 지향한다.</li>
                         </ul>
-                        <h3 class="card-title">내용 요소</h3>
+                        <h3 class="card-title"><i class="fas fa-list-ul"></i>내용 요소</h3>
                         <ul>
                             <li>사회 불평등 현상을 이해하는 관점, 사회 이동과 사회 계층 구조의 유형 및 특징</li>
                             <li>다양한 사회 불평등 양상 (빈곤, 성 불평등, 사회적 소수자 차별 문제 등)과 해결 방안</li>
                             <li>복지 국가의 발전 과정, 사회 복지 제도의 유형과 특징 (사회 보험, 공공 부조, 사회 서비스 등), 현대 사회의 복지 관련 쟁점 (보편적 복지 vs 선별적 복지, 아동 복지, 노인 복지 등)</li>
                         </ul>
-                        <h3 class="card-title">성취 기준</h3>
+                        <h3 class="card-title"><i class="fas fa-check-circle"></i>성취 기준</h3>
                         <ul>
                             <li>사회 불평등 현상 이해 관점 비교, 사회 이동과 사회 계층 구조 유형 및 특징 분석.</li>
                             <li>다양한 사회 불평등 양상 분석, 차별받는 사람 입장 공감, 해결 방안 모색.</li>
@@ -255,28 +395,45 @@
             </div>
         </section>
 
-        <!-- 3. 사회와 문화 수행평가 예시 -->
+        <!-- 3. 사회와 문화 수행평가 예시 (Student-centric) -->
         <section class="card">
-            <h2 class="section-title">3. 사회와 문화 수행평가 예시</h2>
-            <div class="p-4">
-                <p class="mb-4">
-                    사회와 문화 과목의 수행평가는 단순 암기보다는 기본 개념 및 이론을 학생 자신의 삶과 관련시켜 이해하고, 사회적 사건이나 사례에 적용하여 활용할 수 있는지를 평가하는 데 중점을 둡니다. 또한 자기주도적으로 자료를 수집하고 비판적으로 분석하여 합리적으로 의사를 결정하고 문제 해결 방안을 제시할 수 있는 과정을 중시합니다.
-                </p>
-                <h3 class="card-title">주요 수행평가 방법</h3>
-                <ul>
-                    <li><strong>심층 토론 및 정책 제안 발표:</strong> 복잡한 사회 문제에 대한 다양한 관점을 분석하고, 교과 개념과 이론을 바탕으로 합리적인 해결 방안을 제시하며 논리적으로 설득하는 발표 및 토론 활동을 수행합니다. (고차원적 사고력, 문제 해결 능력, 의사소통 능력 함양)</li>
-                    <li><strong>비판적 분석 논술 및 대안 제시:</strong> 특정 사회 현상이나 이론에 대해 비판적으로 분석하고, 다양한 관점을 통합하여 자신만의 독창적인 대안을 논리적으로 제시하는 글쓰기 활동을 합니다. (비판적 사고력, 창의적 문제 해결 능력 함양)</li>
-                    <li><strong>사회과학적 탐구 프로젝트:</strong> 학습자가 직접 사회현상 관련 연구 주제를 선정하고, 자료 수집(설문, 인터뷰 등 포함), 비판적 분석, 가설 검증, 결론 도출에 이르는 전 과정을 수행하며 탐구 보고서를 작성하고 발표합니다. (학습자 주도성, 과학적 탐구 능력, 분석적 사고력 함양)</li>
-                    <li><strong>사회문제 해결 시뮬레이션 및 캠페인 기획:</strong> 특정 사회문제를 선정하여 교과 개념을 적용해 원인을 분석하고, 가상 시뮬레이션 또는 실제 캠페인 기획을 통해 문제 해결 방안을 모색하고 실행 계획을 발표합니다. (협업 능력, 문제 해결 능력, 실천적 사고력 함양)</li>
-                    <li><strong>비판적 미디어 리터러시 및 대안 메시지 생산:</strong> 특정 미디어 콘텐츠의 사회적 영향과 편향성을 교과 이론(예: 미디어 효과 이론)을 바탕으로 비판적으로 분석하고, 이에 대한 대안적 관점이나 해결책을 담은 새로운 미디어 콘텐츠(예: 숏폼 영상, 팟캐스트, 인터랙티브 웹페이지)를 직접 기획 및 제작합니다. (비판적 사고력, 창의성, 미디어 활용 능력 함양)</li>
-                    <li><strong>사회적 실천 및 성찰 보고서:</strong> 학생들이 관심 있는 사회 문제에 대해 자발적으로 참여 활동(예: 시민 단체 활동, 공익 캠페인 참여)을 기획하거나 참여하고, 그 과정에서 느낀 점과 교과 이론과의 연관성을 심층적으로 분석하여 성찰 보고서를 작성합니다. (실천적 지성, 자기 주도성, 성찰 능력 함양)</li>
-                    <li><strong>개념 연결 및 확장 포트폴리오:</strong> 각 단원의 핵심 개념들을 유기적으로 연결하고, 이를 실제 사회현상에 적용한 다양한 사례들을 수집, 분석하여 자신만의 개념 포트폴리오를 제작합니다. (개념 이해 심화, 통합적 사고력 함양)</li>
-                </ul>
-                <p class="mt-4">
-                    이러한 수행평가를 통해 학생들은 비판적 사고력, 문제 해결 능력, 합리적 의사 결정 능력, 의사소통 및 협업 능력, 문화 다양성 존중, 인류 보편적 가치 존중 등의 역량을 보다 적극적으로 함양할 수 있습니다.
-                </p>
+            <h2 class="section-title"><i class="fas fa-clipboard-check"></i>3. 사회와 문화 수행평가, 이렇게 이루어져요!</h2>
+            <p class="mb-6 text-center text-lg text-gray-600">
+                '사회와 문화' 과목에서는 여러분이 <span class="font-bold text-green-600">사회 현상을 깊이 이해하고, 주체적으로 탐구하며, 문제 해결에 참여하는 과정</span>을 중요하게 평가합니다.
+                어떤 활동을 통해 여러분의 성장을 보여줄 수 있을까요?
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 feature-grid">
+                <div class="feature-card" data-title="1. 사회현상 탐구 보고서 작성" data-description="관심 있는 사회 현상을 선택하여 <span class='font-bold text-blue-600'>사회과학적 연구 방법(예: 설문조사, 심층 인터뷰, 통계 자료 분석)을 활용</span>해 탐구하고, 그 과정을 <span class='font-bold text-blue-600'>논리적인 보고서로 작성</span>합니다. 연구 설계부터 결론 도출까지 여러분의 비판적 사고와 탐구 능력이 평가됩니다.<br><br>예시: '청소년 미디어 이용 행태와 사회화의 관계'를 주제로 설문조사를 실시하고, 그 결과를 분석하여 보고서 작성">
+                    <i class="fas fa-flask"></i>
+                    <h3>1. 사회현상 탐구 보고서 작성</h3>
+                    <p class="text-sm text-gray-700">사회현상, 직접 탐구하고 보고서로!</p>
+                </div>
+                <div class="feature-card" data-title="2. 개념 적용 토론 및 논술" data-description="교과서에서 배운 사회학 및 문화인류학의 <span class='font-bold text-blue-600'>핵심 개념과 이론을 실제 사회적 사건이나 사례에 적용</span>하여 분석하고, 이에 대한 <span class='font-bold text-blue-600'>자신의 관점을 논리적으로 토론하거나 논술로 제시</span>하는 활동입니다. 복잡한 문제를 다각도로 이해하고 설득력 있게 표현하는 능력이 평가됩니다.<br><br>예시: '사회 불평등 현상에 대한 기능론과 갈등론적 관점 비교 토론', '미디어의 의제 설정 기능에 대한 비판적 논술' 등">
+                    <i class="fas fa-comments"></i>
+                    <h3>2. 개념 적용 토론 및 논술</h3>
+                    <p class="text-sm text-gray-700">배운 개념으로 사회를 분석하고 토론해요!</p>
+                </div>
+                <div class="feature-card" data-title="3. 사회 참여 활동 기획 및 성찰" data-description="모둠 또는 개인으로 <span class='font-bold text-blue-600'>특정 사회문제 해결을 위한 캠페인이나 프로젝트를 기획하고 실행</span>하며, 그 과정에서 <span class='font-bold text-blue-600'>협력적 의사소통 능력과 실천적 문제 해결 능력</span>을 보여줍니다. 활동 후에는 자신의 경험을 바탕으로 <span class='font-bold text-blue-600'>성찰 보고서</span>를 작성합니다.<br><br>예시: '문화 다양성 존중'을 위한 교내 캠페인 기획 및 실행, '사회적 소수자 인식 개선'을 위한 UCC 제작 등">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>3. 사회 참여 활동 기획 및 성찰</h3>
+                    <p class="text-sm text-gray-700">사회문제 해결에 직접 참여하고 돌아봐요!</p>
+                </div>
+                <div class="feature-card" data-title="4. 나의 학습 성장 포트폴리오" data-description="수업 시간 동안 진행한 <span class='font-bold text-blue-600'>모든 학습 활동(개념 정리 노트, 자료 분석 시트, 토론 참여 기록, 발표 자료 등)을 체계적으로 모아 포트폴리오</span>를 만듭니다. 이를 통해 여러분의 <span class='font-bold text-blue-600'>자기주도적 학습 과정, 개념 이해의 깊이, 그리고 성찰 능력</span>을 종합적으로 보여줄 수 있습니다.<br><br>예시: '일탈 이론 적용 사례 분석' 노트, '사회 변동 양상 조사' 자료, '문화 다양성 증진 방안' 아이디어 스케치 등을 포함한 포트폴리오 제출">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>4. 나의 학습 성장 포트폴리오</h3>
+                    <p class="text-sm text-gray-700">나의 사회와 문화 학습 여정을 기록해요!</p>
+                </div>
             </div>
         </section>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="infoModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeModalBtn">&times;</button>
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <p id="modalDescription" class="modal-description"></p>
+        </div>
     </div>
 
     <script>
@@ -285,23 +442,54 @@
             const content = element.nextElementSibling;
             element.classList.toggle('active');
             if (content.style.maxHeight && content.style.maxHeight !== "0px") {
-                // If currently expanded, collapse it
                 content.style.maxHeight = "0px";
                 content.style.paddingTop = '0';
                 content.style.paddingBottom = '0';
+                content.style.marginBottom = '0.5rem'; /* Reset margin-bottom when collapsed */
             } else {
-                // If currently collapsed, expand it to its full scroll height
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.style.paddingTop = '1rem';
                 content.style.paddingBottom = '1rem';
+                content.style.marginBottom = '1.5rem'; /* Increased margin-bottom when active */
             }
         }
 
-        // Initialize accordion state on page load
+        // JavaScript for modal functionality
         document.addEventListener('DOMContentLoaded', () => {
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-            accordionHeaders.forEach(header => {
-                // No default open state, user can click to open.
+            const modal = document.getElementById('infoModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            // Function to open the modal
+            function openModal(title, description) {
+                modalTitle.innerHTML = title;
+                modalDescription.innerHTML = description;
+                modal.classList.add('show');
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                modal.classList.remove('show');
+            }
+
+            // Event listeners for feature cards
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.dataset.title;
+                    const description = card.dataset.description;
+                    openModal(title, description);
+                });
+            });
+
+            // Event listener for close button
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Event listener to close modal when clicking clicking outside the content
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
             });
         });
     </script>
