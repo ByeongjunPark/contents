@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 한국교원대학교 교육대학원 제 29대 총학생회 웨비나</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+            /* 배경 그라데이션: 진한 색 대신 파스텔 톤으로 변경하여 가독성 향상 */
+            background-image: linear-gradient(135deg, #f0f9ff 0%, #e8f9f1 100%);
+            background-attachment: fixed;
+        }
+        .glass-container {
+            background: rgba(255, 255, 255, 0.6); /* 투명도 조정 */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.27);
+        }
+        /* 헤더 컨테이너 호버 효과 수정 */
+        .header-container {
+            transition: all 0.5s ease-in-out;
+        }
+        .header-container:hover {
+            background-color: #0090d6; /* 호버 시 파란색 배경으로 변경 */
+            color: white;
+        }
+        .text-knue-blue {
+            color: #0090d6;
+        }
+        .text-knue-green {
+            color: #58b530;
+        }
+        .bg-knue-blue-light {
+            background-color: rgba(0, 144, 214, 0.1);
+        }
+        .bg-knue-green-light {
+            background-color: rgba(88, 181, 48, 0.1);
+        }
+        .btn-month {
+            /* 월별 버튼 스타일 */
+            background-color: #f0f4f8;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 9999px;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #0090d6;
+            cursor: pointer;
+            border: 2px solid transparent;
+            width: auto;
+            min-width: 150px;
+            text-align: center;
+        }
+        .btn-month:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            background-image: linear-gradient(45deg, #0090d6, #58b530);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .btn-month.active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            background-image: linear-gradient(45deg, #0090d6, #58b530);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        /* 수강신청/줌 링크 버튼 스타일 수정 */
+        .btn-knue {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 9999px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            width: 100%;
+            /* 버튼 배경색과 글씨색을 명확하게 수정 */
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #0090d6;
+            border: 1px solid rgba(0, 144, 214, 0.3);
+        }
+        .btn-knue.bg-knue-green {
+             color: #58b530;
+             border: 1px solid rgba(88, 181, 48, 0.3);
+        }
+        .btn-knue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            /* 호버 시 그라데이션 효과 유지 */
+            background-image: linear-gradient(45deg, #0090d6, #58b530);
+            color: white;
+        }
+        .table-header th {
+            background-color: rgba(0, 144, 214, 0.2);
+            color: #0090d6;
+            text-align: center; /* 헤더 텍스트 가운데 정렬 */
+        }
+        .table-row-sep {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* 헤더 호버 시 글자색 변경을 위한 클래스 수정 */
+        .header-text-hover-color {
+            transition: all 0.5s ease-in-out;
+        }
+        .header-container:hover .header-text-hover-color {
+            color: white !important;
+        }
+        .table-cell-center td {
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.1); /* 테이블 셀 경계선 추가 */
+        }
+        .table-cell-center tr:hover td {
+            background-color: rgba(0, 144, 214, 0.1); /* 호버 시 셀 색상 변경 */
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="container mx-auto p-8 rounded-3xl max-w-6xl">
+        <!-- 헤더 섹션 - 그라데이션 박스 안에 배치 -->
+        <div class="glass-container p-8 mb-12 text-center header-container">
+            <img src="https://www.knue.ac.kr/site/www/images/contents/cts386_img01.jpg" alt="한국교원대학교 로고" class="mx-auto h-20 mb-4">
+            <!-- 제목 크기 및 줄 간격 수정 -->
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 hero-title">
+                <span class="header-text-hover-color">슬기로운 교원생활을 위한</span> <br>
+                <span class="text-knue-green header-text-hover-color">지식 Up! 행복 Up!</span>
+            </h1>
+            <h2 class="text-2xl font-light hero-subtitle header-text-hover-color">한국교원대학교 교육대학원 총학생회 비대면 웨비나</h2>
+            <p class="mt-4 text-lg hero-desc leading-relaxed header-text-hover-color">
+                안녕하세요? 바쁜 일상 속에서도 꾸준한 성장을 꿈꾸는 학우들을 위해 총학생회가 특별한 온라인 특강을 준비했습니다. 
+                다양한 분야의 교육 전문가와 함께 실재적인 지식을 넓히고, 교육 현장의 고민을 나누는 소중한 시간이 되길 바랍니다.
+            </p>
+        </div>
+
+        <!-- 월별 버튼 섹션 -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="btn-month active" data-month="september">9월 특강</button>
+            <button class="btn-month" data-month="october">10월 특강</button>
+            <button class="btn-month" data-month="november">11월 특강</button>
+        </div>
+
+        <!-- 특강 도표 섹션 -->
+        <div id="webinar-tables">
+            <!-- 9월 웨비나 섹션 -->
+            <section id="september-table" class="mb-12">
+                <div class="overflow-x-auto glass-container rounded-xl p-4 fade-in">
+                    <table class="min-w-full text-left rounded-lg">
+                        <thead class="table-header">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 font-semibold rounded-tl-xl">웨비나 일자</th>
+                                <th scope="col" class="px-6 py-3 font-semibold">강연 주제</th>
+                                <th scope="col" class="px-6 py-3 font-semibold rounded-tr-xl">강사명</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-cell-center">
+                            <tr>
+                                <td class="px-6 py-4">9/1(월)</td>
+                                <td class="px-6 py-4">2022 개정 교육과정과 학교생활기록부 내실화 방안</td>
+                                <td class="px-6 py-4">분당아람고 채무열 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">9/3(수)</td>
+                                <td class="px-6 py-4">유초이음교육의 실재</td>
+                                <td class="px-6 py-4">한국교원대학교 최미진 파견교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">9/10(수)</td>
+                                <td class="px-6 py-4">디지털 플랫폼으로 영상 기반<br>교수학습 콘텐츠 손쉽게 만들기</td>
+                                <td class="px-6 py-4">진해장복초 양인선 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">9/11(목)</td>
+                                <td class="px-6 py-4">디지털 드로잉으로 교수학습 콘텐츠 제작하기</td>
+                                <td class="px-6 py-4">연일작가</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">9/16(화)</td>
+                                <td class="px-6 py-4">초등학교 생활지도와 학급경영</td>
+                                <td class="px-6 py-4">진남초 나승빈 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">9/22(월)</td>
+                                <td class="px-6 py-4">중,고등학교 생활지도와 학급경영</td>
+                                <td class="px-6 py-4">수원칠보고 양혁준 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">9/25(목)</td>
+                                <td class="px-6 py-4">디지털 시대의 부모 교육 방향과 디지털 리터러시</td>
+                                <td class="px-6 py-4">한국과학영재학교 박영민 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">9/29(월)</td>
+                                <td class="px-6 py-4">AI로 업무 경감하기 및 프롬프트 엔지니어링</td>
+                                <td class="px-6 py-4">에세이 윤명희 대표</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 10월 웨비나 섹션 -->
+            <section id="october-table" class="mb-12 hidden">
+                <div class="overflow-x-auto glass-container rounded-xl p-4 fade-in">
+                    <table class="min-w-full text-left rounded-lg">
+                        <thead class="table-header">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 font-semibold rounded-tl-xl">웨비나 일자</th>
+                                <th scope="col" class="px-6 py-3 font-semibold">강연 주제</th>
+                                <th scope="col" class="px-6 py-3 font-semibold rounded-tr-xl">강사명</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-cell-center">
+                            <tr>
+                                <td class="px-6 py-4">10/14(화)</td>
+                                <td class="px-6 py-4">AI 시대, 데이터를 읽고 쓰는 힘!</td>
+                                <td class="px-6 py-4">서울고 송석리 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">10/16(목)</td>
+                                <td class="px-6 py-4">AI를 활용한 논문 작성 방법</td>
+                                <td class="px-6 py-4">삼육고 김송희 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">10/17(금)</td>
+                                <td class="px-6 py-4">옵시디언(Obsidian)을 활용한 연구물 아카이빙</td>
+                                <td class="px-6 py-4">영산중 이성원 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">10/20(월)</td>
+                                <td class="px-6 py-4">교육전문직의 모든 것</td>
+                                <td class="px-6 py-4">충남교육청 김정열 장학사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">10/22(수)</td>
+                                <td class="px-6 py-4">교사학습공동체와 리더십, 그리고 비영리 법인화</td>
+                                <td class="px-6 py-4">화성반송초 박준호 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">10/28(화)</td>
+                                <td class="px-6 py-4">그래도 나는 네가 교사였으면 좋겠어</td>
+                                <td class="px-6 py-4">광명서초 김차명 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">10/30(목)</td>
+                                <td class="px-6 py-4">교육정책 담론의 형성 과정과 최근 쟁점</td>
+                                <td class="px-6 py-4">서원고 김승호 교사</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- 11월 웨비나 섹션 -->
+            <section id="november-table" class="mb-12 hidden">
+                <div class="overflow-x-auto glass-container rounded-xl p-4 fade-in">
+                    <table class="min-w-full text-left rounded-lg">
+                        <thead class="table-header">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 font-semibold rounded-tl-xl">웨비나 일자</th>
+                                <th scope="col" class="px-6 py-3 font-semibold">강연 주제</th>
+                                <th scope="col" class="px-6 py-3 font-semibold rounded-tr-xl">강사명</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-cell-center">
+                            <tr>
+                                <td class="px-6 py-4">11/7(금)</td>
+                                <td class="px-6 py-4">초등 AI 디지털 활용 수업을 위한 All in One 선물세트</td>
+                                <td class="px-6 py-4">서울역삼초 서혜진 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">11/10(월)</td>
+                                <td class="px-6 py-4">중등 인문 과목에서의 디지털 기반 수업 설계와 연구대회 계획 수립하기</td>
+                                <td class="px-6 py-4">진해냉천중 한솔 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">11/14(금)</td>
+                                <td class="px-6 py-4">예체능 교과에서의 디지털 기반 수업 설계와 연구대회 계획 수립하기</td>
+                                <td class="px-6 py-4">성남늘푸른중 김동호 교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">11/17(월)</td>
+                                <td class="px-6 py-4">루브릭과 평가전문성 or 학생의 성장을 돕는 피드백</td>
+                                <td class="px-6 py-4">둔촌고 장은영 수석교사</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">11/19(수)</td>
+                                <td class="px-6 py-4">초등 IB 교육의 실재</td>
+                                <td class="px-6 py-4">대구남동초 황성진 교사</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- 사전 수강신청 및 줌 링크 섹션 -->
+        <section class="mt-12 text-center">
+            <h3 class="text-3xl font-bold mb-6 text-knue-blue">
+                참여 방법
+            </h3>
+            <!-- 높이를 동일하게 맞추기 위해 flexbox를 사용하고, items-stretch로 설정 -->
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-stretch">
+                <div class="glass-container p-6 rounded-xl flex-1 w-full md:w-auto flex flex-col justify-between">
+                    <div>
+                        <p class="text-xl font-semibold mb-3 text-knue-blue">사전 수강신청</p>
+                        <p class="text-gray-700 mb-4">아래 버튼을 클릭하여 관심 있는 특강을 미리 신청해주세요!</p>
+                    </div>
+                    <!-- 버튼 가독성 향상을 위해 색상 수정 -->
+                    <a href="<!-- 여기에 수강신청 링크를 넣어주세요 -->" class="btn-knue inline-block bg-white text-knue-blue py-3 px-8 transition-colors duration-300">
+                        수강신청 바로가기
+                    </a>
+                </div>
+                <div class="glass-container p-6 rounded-xl flex-1 w-full md:w-auto flex flex-col justify-between">
+                    <div>
+                        <p class="text-xl font-semibold mb-3 text-knue-blue">ZOOM 접속</p>
+                        <p class="text-gray-700 mb-4">웨비나 시작 5분 전, 아래 링크로 접속해주세요.</p>
+                    </div>
+                    <!-- 버튼 가독성 향상을 위해 색상 수정 -->
+                    <a href="litt.ly/gdeal" class="btn-knue inline-block bg-white text-knue-green py-3 px-8 transition-colors duration-300">
+                        줌 링크 바로가기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 text-center text-gray-700 text-sm">
+            <p>&copy; 2025 한국교원대학교 교육대학원 제 29대 총학생회. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 월별 버튼과 특강 테이블을 가져옵니다.
+            const monthButtons = document.querySelectorAll('.btn-month');
+            const webinarTables = document.querySelectorAll('#webinar-tables section');
+
+            // 버튼 클릭 이벤트 리스너를 추가합니다.
+            monthButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const month = button.dataset.month;
+
+                    // 모든 버튼에서 active 클래스를 제거하고, 클릭된 버튼에만 추가합니다.
+                    monthButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // 모든 테이블을 숨깁니다.
+                    webinarTables.forEach(table => {
+                        table.classList.add('hidden');
+                        table.classList.remove('fade-in'); // 애니메이션 재활용을 위해 클래스 제거
+                    });
+
+                    // 선택된 월의 테이블을 보여줍니다.
+                    const selectedTable = document.getElementById(`${month}-table`);
+                    if (selectedTable) {
+                        selectedTable.classList.remove('hidden');
+                        selectedTable.classList.add('fade-in'); // 페이드인 애니메이션 추가
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
